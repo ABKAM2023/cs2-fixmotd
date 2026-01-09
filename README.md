@@ -1,3 +1,5 @@
+![GitHub all releases](https://img.shields.io/github/downloads/ABKAM2023/cs2-fixmotd/total?style=for-the-badge)
+
 ## RU 
 Исправляет загрузку MOTD и кнопку перехода на сайт сервера во вкладке.
 

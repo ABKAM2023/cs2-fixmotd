@@ -126,17 +126,11 @@ void FixMotd::UpdateMotdTable()
 		return;
 	}
 
-	struct SetStringUserDataRequest_t
-	{
-		const void* m_pRawData;
-		int m_cbDataSize;
-	};
-	
 	int urlLen = (int)url.length() + 1;
 	
-	SetStringUserDataRequest_t userData;
-	userData.m_pRawData = url.c_str();
-	userData.m_cbDataSize = urlLen;
+	SetStringUserDataRequest_t userData{};
+	userData.m_pRawData = const_cast<void*>(static_cast<const void*>(url.c_str()));
+	userData.m_cbDataSize = static_cast<unsigned int>(urlLen);
 	
 	int stringIndex = pTable->FindStringIndex("motd");
 	if (stringIndex == (int)INVALID_STRING_INDEX)
